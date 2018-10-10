@@ -3,8 +3,14 @@
 ```
 git clone git@gitlab.acirrustech.com:deployment/applicaiton_deployment.git
 cd applicaiton_deployment
+yum -y install epel-release && yum clean all
+yum -y install python-pip && yum clean all
+yum install mariadb-devel  -y
+yum install gcc -y
+yum -y install python-devel libxslt-devel libffi-devel openssl-devel
+pip install -r requirements.txt
+nohub python app.py & 
 ```
-
 
 
 # Dockerize the application 
