@@ -1,73 +1,106 @@
-
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>FS Coding</title>
-    <link rel="shortcut icon" href="https://www.evolvecyber.com/assets/images/favicon.ico" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
-     <link href="static/new_style.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/animation/animation.css">
-  </head>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+}
 
-  <style media="screen">
-    body {
-      background-color: #15443a;
-    }
-    .marketing {
-      color: white;
-    }
-  </style>
+* {
+    box-sizing: border-box;
+}
 
-  <body>
+/* Add padding to containers */
+.container {
+    padding: 16px;
+    background-color: white;
+}
 
-    <div class="container">
-      <div class="header">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <div class="topnav">
-              <a class="btn btn-lg btn-success" href="login">Sign in</a>
-            </div>
-          </ul>
-        </nav>
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
 
-      </div>
-        <div class="jumbotron">
-          <h1 class="animated jackInTheBox">FS Coding Class</h1>
-          <p class="lead"></p>
-          <p><a class="btn btn-lg btn-success" href="signup" role="button">Sign up today</a></p>
-        </div>
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
 
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>Python</h4>
-          <p>Learn how to use Python with Flask, Pandas and other modules</p>
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
 
-          <h4>Machine Learning</h4>
-          <p>Before starting machine learning class make sure you are good on python.</p>
+/* Set a style for the submit button */
+.registerbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
 
-          <h4>Bash Scripting</h4>
-          <p>This course will teach you how to use shell scripts and utilities for practical system administration of Linux operating systems.</p>
-        </div>
+.registerbtn:hover {
+    opacity: 1;
+}
 
-        <div class="col-lg-6">
-          <h4>Ansible</h4>
-          <p>If you’re new to Ansible this series will help you learn the basics.</p>
+/* Add a blue text color to links */
+a {
+    color: dodgerblue;
+}
 
-          <h4>Jenkins Class</h4>
-          <p>In Jenkins class you will learn how works continuous delivery continuous deployment.</p>
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+    background-color: #f1f1f1;
+    text-align: center;
+}
+</style>
+</head>
+<body>
 
-          <h4>Linux CentOS 6/7</h4>
-          <p>Learn how to use CentOS, from beginner basics to advanced techniques, with online video tutorials taught by industry experts.</p>
+<form action="/action_page.php" name="signupform">
+  <div class="container">
+    <h1>Register</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+    <label for="fname"><b>First Name</b></label>
+    <input type="text" placeholder="John" name="fname" required>
 
-        </div>
-      </div>
-      <h5><a href="https://www.linkedin.com/in/farkhod-sadykov/">Find me</a></h5>
-      <footer class="footer">
+    <label for="lname"><b>Last Name</b></label>
+    <input type="text" placeholder="Smith" name="lname" required>
 
-        <p>&copy; FS Coding 2018</p>
-      </footer>
+    <label for="username"><b>User Name</b></label>
+    <input type="text" placeholder="johnsmith" name="lname" required>
 
-    </div>
-  </body>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    <hr>
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+
+  <div class="container signin">
+    <p>Already have an account? <a href="#">Sign in</a>.</p>
+  </div>
+</form>
+
+</body>
 </html>
