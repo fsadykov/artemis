@@ -1,30 +1,30 @@
-// Farkhod Sadykov
 node {
-   stage("Git pull") {
-       git poll: true, url: "git@gitlab.acirrustech.com:deployment/applicaiton_deployment.git"
-   }
-   stage("Createing apps Folder") {
-     // This line will check /apps folder if doesn't exist will create
-     sh "ssh root@${hostname} 'if [ -d /apps ]; then echo 'Folder is exist'; else mkdir /apps; fi'"
-   }
+    stage("Stage1"){
+        sh 'ssh root@${IP}    yum install httpd -y'
+    }
+    stage("Sleep 5"){
+        sleep 5
+    }
+    
+    stage("Pull Code"){
+        git 'git@gitlab.acirrustech.com:deployment/applicaiton_deployment.git'
+    }
+    
+    stage("Copy App"){
+        sh "scp  -r ${workspace}/*        root@${IP}:/tmp"
+    }
+    
+    stage("Install Packages"){
+        sh 'ssh root@${IP}  yum -y install epel-release   python-pip  mariadb-devel  gcc install python-devel libxslt-devel libffi-devel openssl-devel'
+    }
+    
+    stage("Python Dependencies"){
+        sh 'ssh root@${IP} pip install -r /tmp/requirements.txt'
 
-   stage("Copy everything from workspace to remote host") {
-       sh "rsync -avz --delete ${workspace}/* root@${hostname}:/apps/"
-   }
-
-   stage('Installing packages for application') {
-     // run.sh script will install packages on remote host
-     sh "ssh root@${hostname} 'sh /apps/run.sh  '"
-   }
-
-   stage("Installing modules"){
-     // requirements.txt file contents are modules name for python application
-       sh "ssh root@${hostname}    pip install -r /apps/requirements.txt"
-   }
-
-   stage("Run the application"){
-     // We use nohub command to run app on baground
-       sh "ssh root@${hostname}  'nohup  python /apps/app.py &  2> /dev/null' "
-   }
-
+    }
+    stage("Run App"){
+        sh 'ssh root@${IP} nohup python /tmp/app.py &'
+    }
+    
+    
 }
