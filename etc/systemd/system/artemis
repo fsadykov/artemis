@@ -1,0 +1,15 @@
+[Unit]
+Description=Farhod's new application
+Documentation=Gitlab gitlab.acirrustech.com
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python  /etc/artemis/artemis.py
+ExecReload=/usr/local/bin/kill --signal HUP $MAINPID
+Capabilities=CAP_IPC_LOCK+ep
+SecureBits=keep-caps
+NoNewPrivileges=yes
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
