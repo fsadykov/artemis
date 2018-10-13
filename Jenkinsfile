@@ -14,7 +14,7 @@ node {
 
    stage('Installing packages for application') {
      // run.sh script will install packages on remote host
-     sh "ssh root@hostname 'sh /apps/run.sh'"
+     sh "ssh root@${hostname} 'sh /apps/run.sh'"
    }
 
    stage("Installing modules"){
