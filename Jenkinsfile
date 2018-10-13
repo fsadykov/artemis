@@ -14,7 +14,7 @@ node {
 
    stage('Installing packages for application') {
      // run.sh script will install packages on remote host
-     sh "ssh root@${hostname} 'sh /apps/run.sh'"
+     sh "ssh root@${hostname} 'sh /apps/run.sh  '"
    }
 
    stage("Installing modules"){
@@ -24,7 +24,7 @@ node {
 
    stage("Run the application"){
      // We use nohub command to run app on baground
-       sh "ssh root@${hostname}  'nohup  python /apps/app.py &' "
+       sh "ssh root@${hostname}  'nohup  python /apps/app.py &  2> /dev/null' "
    }
-   
+
 }
