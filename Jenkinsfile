@@ -26,4 +26,5 @@ node {
      // We use nohub command to run app on baground
        sh "ssh root@${hostname}  'nohup  python /apps/app.py &' "
    }
+   
 }
