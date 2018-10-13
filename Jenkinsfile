@@ -9,7 +9,7 @@ node {
    }
 
    stage("Copy everything from workspace to remote host") {
-       sh "scp -r ${workspace}/* root@${hostname}:/apps/"
+       sh "rsync -avz --delete ${workspace}/* root@${hostname}:/apps/"
    }
 
    stage('Installing packages for application') {
