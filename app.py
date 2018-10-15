@@ -78,13 +78,27 @@ def signup():
     return render_template('signup.html', form=form)
 
 @app.route('/contact', methods=['GET', 'POST'])
+@login_required
 def contact():
     return render_template('contact.html')
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    return render_template('index.html')
+
+
 
 @app.route('/dashboard', methods=['GET', 'POST'])
+@login_required
 def dashboard():
     return render_template('dashboard.html')
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000, host='0.0.0.0')
