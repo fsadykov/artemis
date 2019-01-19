@@ -10,4 +10,5 @@ RUN pip install --upgrade pip enum34
 RUN pip install -r requirements.txt
 EXPOSE 80
 CMD ["pip", "install", "--upgrade", "pip"]
+
 CMD ["python", "app.py"]
