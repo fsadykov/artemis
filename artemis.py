@@ -58,9 +58,10 @@ def index():
         if user:
             if check_password_hash(user.password, password):
                 login_user(user)
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('cloud'))
         return '<h1>Invalid username or password</h1>'
     return render_template('index.html')
+
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -77,10 +78,12 @@ def signup():
         return redirect(url_for('login'))
     return render_template('signup.html', form=form)
 
+
 @app.route('/contact', methods=['GET', 'POST'])
 @login_required
 def contact():
     return render_template('contact.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -88,17 +91,21 @@ def login():
 
 
 
-@app.route('/dashboard', methods=['GET', 'POST'])
+@app.route('/cloud', methods=['GET', 'POST'])
 @login_required
-def dashboard():
-    return render_template('dashboard.html')
+def cloud():
+    data = request.form.get('image')
+    if data:
+        return str(data)
+    return render_template('cloud.html')
+    
 
 
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return render_template('index.html')
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000, host='0.0.0.0')

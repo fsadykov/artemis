@@ -104,7 +104,7 @@ body {
 .topnav .loginclass {
   float: right;
   color: white;
-  background-color: green;
+  background-color: #4CAF50;
 }
 
 .topnav a:hover {
@@ -117,6 +117,20 @@ body {
   color: white;
 }
 </style>
+
+</head>
+<body>
+  <!-- this container content top navigatoin -->
+  <div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="#news">News</a>
+    <a href="/contact">Contact</a>
+    <a href="#about">About</a>
+    <a href="{{ url_for('cloud') }}">Cloud</a>
+    <a href="signup">Sign up</a>
+
+    <a class="loginclass" onclick="document.getElementById('id01').style.display='block'">Login</a>
+  </div>
 <style>
 <!-- This line works with login person  -->
 body {font-family: Arial, Helvetica, sans-serif;}
@@ -239,29 +253,35 @@ span.psw {
     }
 }
 </style>
-
 </head>
 <body>
-  <!-- this container content top navigatoin -->
-  <div class="topnav">
-    <a class="active" href="/">Home</a>
-    <a href="#news">News</a>
-    <a href="/contact">Contact</a>
-    <a href="#about">About</a>
+<div id="id01" class="modal">
 
-    <a class="loginclass" href="logout" >logout</a>
-  </div>
+  <form class="modal-content animate", method="POST">
+    <div class="imgcontainer">
+      <!-- <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> -->
+      <img src="https://s3.amazonaws.com/acirrustech.com/website/avatart.jp.png" alt="Avatar" class="avatar">
+    </div>
 
-</head>
-<body>
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" required>
 
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required>
 
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
 
-
-
-
-
-</body>
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
 
 <script>
 // Get the modal
@@ -276,4 +296,21 @@ window.onclick = function(event) {
 </script>
 
 
+
+
+<!-- This is Welcome sentences  -->
+<center class="welcomeword">
+ <h2> Welcome to Acirrustech Solution </h2>
+</center>
+<div style="padding-left:10px">
+  <h3>Please contact our team</h3>
+</div>
+<br>
+
+
+</body>
+<footer class="footer">
+
+  <p>&copy; Acirustech Solution 2018</p>
+</footer>
 </html>
